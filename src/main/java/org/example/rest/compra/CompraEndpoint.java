@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@Api(tags = {"Compra"})
+@Api(value = "abc", tags = {"API"})
 public interface CompraEndpoint {
     @PostMapping(path = EndpointUrls.COMPRA, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    @ApiOperation(value = "Simula as parcelas geradas por uma compra", tags = {"Compra"})
+    @ApiOperation(value = "Simula as parcelas geradas por uma compra")
     Parcela[] geraParcelas(@RequestBody CompraDTO compraDTO);
 }
