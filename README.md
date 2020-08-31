@@ -29,5 +29,5 @@ Após isso, inicie a aplicação:
 mvn spring-boot:run
 ```
 
-##Documentação
-Para ver a documentação da serviço no SWAGGER, acesse http://localhost:8080/swagger-ui/
+## Documentação
+Para ver a documentação da API no SWAGGER, acesse http://localhost:8080/swagger-ui/
