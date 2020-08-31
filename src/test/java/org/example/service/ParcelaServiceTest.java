@@ -24,7 +24,7 @@ class ParcelaServiceTest {
         int qtdeParcelas = 5;
 
         // QUANDO
-        BigDecimal valorParcela = parcelaService.calcularValorParcela(valorFinanciado, qtdeParcelas, null);
+        BigDecimal valorParcela = parcelaService.calcularVlParcela(valorFinanciado, qtdeParcelas, null);
         // ENTAO
         assertEquals(BigDecimal.valueOf(200), valorParcela);
     }
@@ -37,7 +37,7 @@ class ParcelaServiceTest {
         Float taxaJurosMensal = 1.15F;
 
         // QUANDO
-        BigDecimal valorParcela = parcelaService.calcularValorParcela(valorFinanciado, qtdeParcelas, taxaJurosMensal);
+        BigDecimal valorParcela = parcelaService.calcularVlParcela(valorFinanciado, qtdeParcelas, taxaJurosMensal);
         // ENTAO
         assertAll(
                 () -> assertTrue(valorParcela.compareTo(BigDecimal.valueOf(106)) > 0),

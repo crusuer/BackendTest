@@ -39,7 +39,7 @@ public class CompraService {
         if (qtdeParcelas > 6) {
             taxaJurosMensal = 1.15F;
         }
-        BigDecimal valorParcela = parcelaService.calcularValorParcela(valorFinanciado, qtdeParcelas, taxaJurosMensal);
+        BigDecimal valorParcela = parcelaService.calcularVlParcela(valorFinanciado, qtdeParcelas, taxaJurosMensal);
 
         for (int i = 0; i < parcelas.length; i++) {
             parcelas[i] = new Parcela(1 + i,

@@ -21,7 +21,7 @@ public class ParcelaService {
         return valorFinanciado.divide(BigDecimal.valueOf(qtdeParcelas), RoundingMode.HALF_UP);
     }
 
-    public BigDecimal calcularValorParcela(BigDecimal valorFinanciado, int qtdeParcelas, Float taxaJurosMensal) {
+    public BigDecimal calcularVlParcela(BigDecimal valorFinanciado, int qtdeParcelas, Float taxaJurosMensal) {
         return taxaJurosMensal == null ? calcularValorParcelaSemJuros(valorFinanciado, qtdeParcelas)
                 : calcularValorParcelaComJuros(valorFinanciado, qtdeParcelas, taxaJurosMensal);
     }

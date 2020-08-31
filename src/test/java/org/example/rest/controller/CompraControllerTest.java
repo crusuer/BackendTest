@@ -53,7 +53,7 @@ class CompraControllerTest {
                 // ENTAO
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().json("[{ \"numeroParcela\": 1, \"valor\": 1000.00, \"taxaJurosAoMes\": null }]"));
+                .andExpect(content().json("[{ \"numeroParcela\": 1, \"valor\": 1000.00 }]"));
     }
 
     @Test
