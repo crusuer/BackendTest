@@ -1,4 +1,4 @@
-package org.example.rest.controller;
+package org.example.rest.compra;
 
 import com.google.gson.Gson;
 import org.example.Application;
