@@ -3,7 +3,6 @@ package org.example.rest.controller;
 import com.google.gson.Gson;
 import org.example.Application;
 import org.example.model.dto.CompraDTO;
-import org.example.model.dto.ParcelaDTO;
 import org.example.model.entity.CondicaoPagamento;
 import org.example.model.entity.Parcela;
 import org.example.model.entity.Produto;
@@ -19,7 +18,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
 
-import static org.hamcrest.Matchers.greaterThan;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;

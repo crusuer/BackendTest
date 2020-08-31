@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.example.Application;
+import org.example.exception.ValorEntradaIncorretoException;
 import org.example.model.dto.CompraDTO;
 import org.example.model.entity.CondicaoPagamento;
 import org.example.model.entity.Parcela;
@@ -19,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.*;
 @ContextConfiguration(classes = Application.class)
 class CompraServiceTest {
     private final Produto produto = new Produto(123L, "Lavadora XPTO", BigDecimal.valueOf(1000));
-
     @Autowired
     private CompraService compraService;
 
@@ -72,5 +72,15 @@ class CompraServiceTest {
                 () -> assertEquals(BigDecimal.valueOf(106.43), parcelas[0].getValor()),
                 () -> assertEquals(1.15F, parcelas[0].getTaxaJurosAoMes())
         );
+    }
+
+    @Test
+    void deveGerarExcecaoParaValorEntradaMaiorQueValorCompra() {
+        // DADO
+        CondicaoPagamento condicaoPagamento = new CondicaoPagamento(BigDecimal.valueOf(5000), 10);
+        CompraDTO compraDTO = new CompraDTO(produto, condicaoPagamento);
+
+        // QUANDO
+        assertThrows(ValorEntradaIncorretoException.class, () -> compraService.geraParcelas(compraDTO));
     }
 }

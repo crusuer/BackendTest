@@ -1,6 +1,7 @@
 package org.example.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.example.exception.ValorEntradaIncorretoException;
 import org.example.model.dto.CompraDTO;
 import org.example.model.entity.CondicaoPagamento;
 import org.example.model.entity.Parcela;
@@ -20,12 +21,19 @@ public class CompraService {
     public Parcela[] geraParcelas(CompraDTO compraDTO) {
         CondicaoPagamento condicaoPagamento = compraDTO.getCondicaoPagamento();
         Produto produto = compraDTO.getProduto();
-        BigDecimal valorFinanciado = condicaoPagamento.calcularValorFinanciado(produto.getValor());
+        BigDecimal valorFinanciado = calcularVlFinanciado(condicaoPagamento.getValorEntrada(), produto.getValor());
 
         return preencherParcelas(valorFinanciado, condicaoPagamento.getQtdeParcelas());
     }
 
-    public Parcela[] preencherParcelas(BigDecimal valorFinanciado, int qtdeParcelas) {
+    private BigDecimal calcularVlFinanciado(BigDecimal valorEntrada, BigDecimal valorCompra) {
+        if (valorEntrada.compareTo(valorCompra) > 0) {
+            throw new ValorEntradaIncorretoException("Valor de entrada é maior que o valor total da compra.");
+        }
+        return valorCompra.subtract(valorEntrada);
+    }
+
+    private Parcela[] preencherParcelas(BigDecimal valorFinanciado, int qtdeParcelas) {
         Parcela[] parcelas = new Parcela[qtdeParcelas];
         Float taxaJurosMensal = null;
         if (qtdeParcelas > 6) {
