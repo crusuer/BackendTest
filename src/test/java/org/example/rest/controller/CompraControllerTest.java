@@ -19,7 +19,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.math.BigDecimal;
 
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -46,7 +46,7 @@ class CompraControllerTest {
 
         // QUANDO
         this.mockMvc.perform(
-                put(EndpointUrls.PARCELAS)
+                post(EndpointUrls.COMPRA)
                         .content(new Gson().toJson(compraDTO))
                         .contentType(MediaType.APPLICATION_JSON)
         )
@@ -70,7 +70,7 @@ class CompraControllerTest {
 
         // QUANDO
         this.mockMvc.perform(
-                put(EndpointUrls.PARCELAS)
+                post(EndpointUrls.COMPRA)
                         .content(new Gson().toJson(compraDTO))
                         .contentType(MediaType.APPLICATION_JSON)
         )

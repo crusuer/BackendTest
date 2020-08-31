@@ -5,7 +5,7 @@ import org.example.model.entity.Parcela;
 import org.example.rest.EndpointUrls;
 import org.example.service.CompraService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +14,7 @@ public class CompraController {
     @Autowired
     private CompraService compraService;
 
-    @PutMapping(path = EndpointUrls.PARCELAS)
+    @PostMapping(path = EndpointUrls.COMPRA)
     public Parcela[] geraParcelas(@RequestBody CompraDTO compraDTO) {
         return compraService.geraParcelas(compraDTO);
     }
